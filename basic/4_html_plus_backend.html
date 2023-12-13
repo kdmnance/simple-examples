@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example New Simulation Form (With a Backend)</title>
+
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+    <script src="js/example.js"></script>
+  </head>
+  <body onload="getBoundaries()">
+    <h1 class="heading">SIMple</h1>
+    <h2 class="subheading">New simulation</h2>
+
+    <ul class="boundaries"></ul>
+
+    <div class="boundary-details">
+      <p class="boundary-description"></p>
+    </div>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+    <button onclick="startSimulation()" class="start-simulation-button">Start Simulation</button>
+
+    <p class="success-message"></p>
+  </body>
+</html>

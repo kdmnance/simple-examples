@@ -1,0 +1,269 @@
+{
+  "uuid": "4932ed9c-9485-4847-be58-b006a7121844",
+  "lastMigration": 27,
+  "name": "SIMple Backend",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3002,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "d0626a4f-1f87-43a8-948a-acc51efce543",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "boundaries",
+      "responses": [
+        {
+          "uuid": "590d3908-3aeb-49fc-a1ce-c97cefc9f27b",
+          "body": "{\n  \"boundaries\": [\n    {\n      \"name\": \"Fort Collins\",\n      \"id\": 1\n    },\n    {\n      \"name\": \"Old MacDonald's Farm\",\n      \"id\": 2\n    },\n    {\n      \"name\": \"Roosevelt National Forest\",\n      \"id\": 3\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Get all boundaries",
+          "headers": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2f2d2c93-9a34-4d68-94f0-729ef661b450",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "boundaries/:id",
+      "responses": [
+        {
+          "uuid": "251544da-b3ce-4277-9cd5-88251b7a6c4c",
+          "body": "{\n  \"name\": \"Fort Collins\",\n  \"id\": 1,\n  \"description\": \"City limits of Fort Collins, CO, USA\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "id = 1",
+          "headers": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "1",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "45179920-7d2f-4959-957d-453f52825258",
+          "body": "{\n  \"name\": \"Old MacDonald's Farm\",\n  \"id\": 2,\n  \"description\": \"Property limits of Old MacDonald's Farm\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "id = 2",
+          "headers": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "2",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "29ea91b0-42e8-4f2d-b95d-d525cab367a9",
+          "body": "{\n  \"name\": \"Roosevelt National Forest\",\n  \"id\": 3,\n  \"description\": \"Limits of the Roosevelt National Forest in Larimer County, CO, USA\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "id = 3",
+          "headers": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "3",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0c5a63e2-54ae-46b8-87ae-ba7f92504f0c",
+          "body": "{\n  \"code\": 404,\n  \"message\": \"No boundary found for the given ID\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "",
+          "headers": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "1",
+              "invert": true,
+              "operator": "equals"
+            },
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "2",
+              "invert": true,
+              "operator": "equals"
+            },
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "3",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ffa2c91a-fcbd-4673-8369-a46be1dc9a59",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "simulations",
+      "responses": [
+        {
+          "uuid": "2fb6c44b-20be-4182-8a12-3a5762bf521c",
+          "body": "{\n  \"simulationId\": \"{{ faker 'datatype.uuid' }}\"\n}",
+          "latency": 0,
+          "statusCode": 202,
+          "label": "",
+          "headers": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "d0626a4f-1f87-43a8-948a-acc51efce543"
+    },
+    {
+      "type": "route",
+      "uuid": "2f2d2c93-9a34-4d68-94f0-729ef661b450"
+    },
+    {
+      "type": "route",
+      "uuid": "ffa2c91a-fcbd-4673-8369-a46be1dc9a59"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

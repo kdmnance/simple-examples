@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example New Simulation Form (Plus JS and CSS)</title>
+
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+    <script src="js/example.js"></script>
+  </head>
+  <body>
+    <h1 class="heading">SIMple</h1>
+    <h2 class="subheading">New simulation</h2>
+
+    <ul class="boundaries">
+      <li onclick="selectBoundary(this)" class="boundary">Fort Collins</li>
+      <li onclick="selectBoundary(this)" class="boundary">Old MacDonald's Farm</li>
+      <li onclick="selectBoundary(this)" class="boundary">Roosevelt National Forest</li>
+    </ul>
+
+    <div class="boundary-details">
+      <h3 class="boundary-name"></h3>
+      <p class="boundary-description"></p>
+    </div>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <button onclick="startSimulation()" class="start-simulation-button">Start Simulation</button>
+  </body>
+</html>
